@@ -65,41 +65,61 @@ Instrucciones
 
 '''
 
-print('\n***** Conversor de Temperaturas *****')
+def menu():
+    print('Para convertir de C a F, presione: 1')
+    print('Para convertir de C a K, presione: 2')
+    print('Para convertir de F a C, presione: 3')
+    print('Para convertir de F a K, presione: 4')
+    print('Para convertir de K a C, presione: 5')
+    print('Para convertir de K a F, presione: 6')
+    print('Para terminar, presione: 7\n')
 
-print('Para convertir de C a F, presione: 1')
-print('Para convertir de C a K, presione: 2')
-print('Para convertir de F a C, presione: 3')
-print('Para convertir de F a K, presione: 4')
-print('Para convertir de K a C, presione: 5')
-print('Para convertir de K a F, presione: 6')
-print('Para terminar, presione: 7\n')
-user_option = input('Ingrese la opción deseada: ')
-
-if user_option == '1':
+def c_to_f():
     temp_c = float(input('Ingrese temperatura en Celsius: '))
     temp_f = round((temp_c * (9/5) + 32), 1)
     print(f'{temp_c} celsius equivalen a {temp_f} farenheit.')
-elif user_option == '2':
+
+def c_to_k():
     temp_c = float(input('Ingrese temperatura en Celsius: '))
     temp_k = round((temp_c + 273.15), 1)
     print(f'{temp_c} celsius equivalen a {temp_k} kelvin.')
-elif user_option == '3':
+
+def f_to_c():
     temp_f = float(input('Ingrese temperatura en Farenheit: '))
     temp_c = round(((temp_f - 32) * (5/9)), 1)
     print(f'{temp_f} farenheit equivalen a {temp_c} celsius.')
-elif user_option == '4':
+
+def f_to_k():
     temp_f = float(input('Ingrese temperatura en Farenheit: '))
     temp_k = round(((temp_f - 32) * (5/9) + 273.15), 1)
     print(f'{temp_f} farenheit equivalen a {temp_k} kelvin.')
-elif user_option == '5':
+
+def k_to_c():
     temp_k = float(input('Ingrese temperatura en Kelvin: '))
     temp_c = round((temp_k - 273.15), 1)
     print(f'{temp_k} kelvin equivalen a {temp_c} celsius.')
-elif user_option == '6':
+
+def k_to_f():
     temp_k = float(input('Ingrese temperatura en Kelvin: '))
     temp_f = round(((temp_k - 273.15) * (9/5) + 32), 1)
     print(f'{temp_k} kelvin equivalen a {temp_f} farenheit.')
+
+
+print('\n***** Conversor de Temperaturas *****')
+menu()
+user_option = input('Ingrese la opción deseada: ')
+if user_option == '1':
+    c_to_f()
+elif user_option == '2':
+    c_to_k()
+elif user_option == '3':
+    f_to_c()
+elif user_option == '4':
+    f_to_k()
+elif user_option == '5':
+    k_to_c()
+elif user_option == '6':
+    k_to_f()
 elif user_option == '7':
     quit()
 else:
