@@ -104,25 +104,25 @@ def k_to_f():
     temp_f = round(((temp_k - 273.15) * (9/5) + 32), 1)
     print(f'{temp_k} kelvin equivalen a {temp_f} farenheit.')
 
-
-print('\n***** Conversor de Temperaturas *****')
-menu()
-user_option = input('Ingrese la opción deseada: ')
-if user_option == '1':
-    c_to_f()
-elif user_option == '2':
-    c_to_k()
-elif user_option == '3':
-    f_to_c()
-elif user_option == '4':
-    f_to_k()
-elif user_option == '5':
-    k_to_c()
-elif user_option == '6':
-    k_to_f()
-elif user_option == '7':
-    quit()
-else:
-    print('Opción no válida.')
+while True:
+    print('\n***** Conversor de Temperaturas *****')
+    menu()
+    user_option = input('Ingrese la opción deseada: ')
+    if user_option == '1':
+        c_to_f()
+    elif user_option == '2':
+        c_to_k()
+    elif user_option == '3':
+        f_to_c()
+    elif user_option == '4':
+        f_to_k()
+    elif user_option == '5':
+        k_to_c()
+    elif user_option == '6':
+        k_to_f()
+    elif user_option == '7':
+        break
+    else:
+        print('Opción no válida.')
 
 
