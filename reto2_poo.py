@@ -44,12 +44,64 @@ Si el daño es "suspensión":
     60000 y solo se realizará esta reparación a motocicletas
 '''
 
-class Vehiculos:
-    def __init__(self, tipo, marca, modelo):
-        self.tipo = tipo
+class Vehiculo():
+    def __init__(self, marca, modelo):
         self.marca = marca
         self.modelo = modelo
 
+    def informacion(self):
+        print(f'El vehículo es de marca: {self.marca} y modelo: {self.modelo}')
+
+class Automovil(Vehiculo):
+    def __init__(self, marca, modelo, puertas):
+        super().__init__(marca, modelo)
+        self.puertas = puertas
+
+    def reparacion(self, reparar):
+        if reparar == "Motor":
+            print(f'La reparación de: {reparar} cuesta $150.000')
+        elif reparar == 'Sistema eléctrico':
+            print(f'La reparación de {reparar} cuesta $75.000')
+        elif reparar == 'Frenos':
+            print(f'La reparación de {reparar} para cuesta $80.000')
+        elif reparar == 'Suspensión':
+            print(f'No se presta el servicio de reparación de: {self.reparar}')
+
+class Motocicleta(Vehiculo):
+    def __init__(self, marca, modelo, cilindraje):
+        super().__init__(marca, modelo)
+        self.cilindraje = cilindraje
+
+    def reparacion(self, reparar):
+        if reparar == 'Motor':
+            print(f'La reparación de: {reparar} cuesta $100.000')
+        elif reparar == 'Sistema eléctrico':
+            print(f'La reparación de: {reparar} cuesta $50.000')
+        elif reparar == 'Frenos':
+            print(f'La reparación de: {reparar} cuesta $80.000')
+        elif reparar == 'Suspensión':
+            print(f'La reparación de: {reparar} cuesta $60.000')
+
+class Bicicleta(Vehiculo):
+    def __init__(self, marca, modelo, electrica=None):
+        super().__init__(marca, modelo)
+        self.electrica = electrica
+    
+    def reparacion(self, reparar):
+        if reparar == "Motor":
+            if self.electrica == True:
+                print(f'La reparación de: {reparar} cuesta $50.000')
+            else:
+                print(f'El servicion de reparación de: {reparar} no está disponible')
+        elif reparar == 'Frenos':
+            print(f'La reparación de {reparar} cuesta $30.000')
+        elif reparar == 'Suspensión':
+            print(f'La reparación de: {reparar} cuesta $45.000')
+
+bici = Bicicleta('Shimano', 2023, True)
+bici.informacion()
+bici.reparacion('Frenos')
+print('-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n')
 
 '''
 Crear un programa en Python que permita a los usuarios convertir temperaturas entre tres escalas comunes: 
@@ -124,5 +176,3 @@ while True:
         break
     else:
         print('Opción no válida.')
-
-
