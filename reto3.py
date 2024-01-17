@@ -42,6 +42,7 @@ Cada contacto como minimo debe de tener la siguiente informacion:
     Numero
     Correo
 '''
+'''SOLUCION 1: SECUENCIAL
 contact_list = {}
 
 while True:
@@ -90,4 +91,64 @@ while True:
 
     elif opt == '5':
         print('Good bye')
+        break
+'''
+
+'''SOLUCION 2: FUNCIONAL'''
+
+def menu():
+    print('\n*-*-*-*-*-*-*-* MENU *-*-*-*-*-*-*-*')
+    print('Type 1, for adding new contact')
+    print('Type 2, for searching contact')
+    print('Type 3, for displaying all contacts')
+    print('Type 4, for deleting a contact')
+    print('Type 5, to exit\n')
+
+def add():
+    new_pn = input('Type contact\'s phone number: ')
+    if new_pn in contact_list.keys():
+        print('\n~~~~~ User already exists ~~~~~\n')
+    else:
+        new_name = input('Type contact\'s name: ')
+        new_email = input('Type contact\'s email: ')
+        contact_list[new_pn] = {"name":new_name, "email":new_email}
+
+def search():
+    search = input('Type contact\'s phone number to search in contact list: ')
+    if not search in contact_list.keys():
+        print('\n~~~~~ User does not exist ~~~~~\n')
+    else:
+        print('\n~~~~~ User already exists ~~~~~\n')
+        print(f'Name: {contact_list[search]["name"]}')
+        print(f'Phone number: {search}')
+        print(f'Email: {contact_list[search]["email"]}')
+
+def show_all():
+    print('\n~~~~~ Contact List ~~~~~\n')
+    for i in contact_list.keys():
+        print(f'Name: {contact_list[i]["name"]}')
+        print(f'Phone number: {i}')
+        print(f'Email: {contact_list[i]["email"]}\n')
+
+def delete():
+    delete = input('Type contact\'s phone number to delete: ')
+    if not delete in contact_list.keys():
+        print('\n~~~~~ Contact can not be deleted, it does not exist ~~~~~')
+    else:
+        del contact_list[delete]
+
+contact_list = {}
+while True:
+    menu()
+    opt = input('Type one of the above options: ')
+
+    if opt == '1':
+        add()
+    elif opt == '2':
+        search()
+    elif opt == '3':
+        show_all()
+    elif opt == '4':
+        delete()
+    elif opt == '5':
         break
