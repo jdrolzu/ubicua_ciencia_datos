@@ -57,9 +57,12 @@ while True:
 
     if opt == '1':
         contact_numb = input('Type contact\'s phone number: ')
-        contact_name = input('Type contact\'s name: ')
-        contact_email = input('Type contact\'s email: ')
-        contact_list[contact_numb] = {"name":contact_name, "email":contact_email}
+        if contact_numb in contact_list.keys():
+            print('\n~~~~~ User already exists ~~~~~\n')
+        else:
+            contact_name = input('Type contact\'s name: ')
+            contact_email = input('Type contact\'s email: ')
+            contact_list[contact_numb] = {"name":contact_name, "email":contact_email}
 
     elif opt == '2':
         search = input('Type contact\'s phone number to search in contact list: ')
@@ -70,18 +73,21 @@ while True:
             print(f'Email: {contact_list[search]["email"]}')
         else:
             print('\n~~~~~ User does not exist ~~~~~\n')
+
     elif opt == '3':
         for i in contact_list.keys():
             print('\n~~~~~ Contact List ~~~~~\n')
             print(f'Name: {contact_list[i]["name"]}')
             print(f'Phone number: {i}')
             print(f'Email: {contact_list[i]["email"]}\n')
+
     elif opt == '4':
         delete_contact = input('Type contact\'s phone number to delete: ')
         if not delete_contact in contact_list.keys():
-            print('Contact can not be deleted, it does not exist')
+            print('\n~~~~~ Contact can not be deleted, it does not exist ~~~~~')
         else:
             del contact_list[delete_contact]
+
     elif opt == '5':
         print('Good bye')
         break
